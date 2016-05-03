@@ -26,3 +26,6 @@ alias rsync-synchronize="rsync -avzu --delete --progress -h"
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
 
+# Docker
+alias docker-term='docker-machine start default; eval $(docker-machine env)'
+
