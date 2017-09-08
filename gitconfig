@@ -12,8 +12,7 @@
     bS = show-branch -a
     branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
     new-feature = "!f() { git co develop && git pull && git co -b feature/$1; }; f"
-
-
+    changelog = "!f() {  git log  $(git describe --abbrev=0 --tags).. --merges --pretty=format:%b; }; f"
     # checkout/fetch/merge/push/rebase
     # checkout
     co  = checkout
