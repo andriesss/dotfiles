@@ -31,30 +31,35 @@ DIRSTACKSIZE=5
 # Enable extended globbing
 setopt extendedglob
 
-source "$HOME/.antigen/antigen.zsh"
-
-antigen-use oh-my-zsh
-antigen bundle unixorn/autoupdate-antigen.zshplugin
-antigen-bundle arialdomartini/oh-my-git
-antigen bundle akoenig/gulp.plugin.zsh
-antigen theme ys
-antigen bundle git
-antigen bundle node
-antigen bundle npm
-antigen bundle vagrant
-antigen bundle sudo
-antigen bundle zsh-users/zsh-syntax-highlighting
-
 # Include local zsh config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # Include aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-antigen apply
-
 # Include aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-fortune | cowsay
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/andries/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="ys"
+
+plugins=(
+  git
+  node
+  npm
+  sudo
+  fzf
+)
+
+source $ZSH/oh-my-zsh.sh
+

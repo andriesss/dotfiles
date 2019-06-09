@@ -9,14 +9,6 @@ alias path='echo $PATH | tr -s ":" "\n"'
 # Service
 alias ss="sudo service"
 
-# Server aliasses
-alias ngrestart="ss nginx restart"
-alias ngstart="ss nginx start"
-alias ngstop="ss nginx stop"
-alias phprestart="ss php5-fpm restart"
-alias phpstart="ss php5-fpm start"
-alias phpstop="ss php5-fpm stop"
-
 # Rsync
 alias rsync-copy="rsync -avz --progress -h"
 alias rsync-move="rsync -avz --progress -h --remove-source-files"
@@ -25,7 +17,4 @@ alias rsync-synchronize="rsync -avzu --delete --progress -h"
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
-
-# Docker
-alias docker-term='docker-machine start default; eval $(docker-machine env)'
 
