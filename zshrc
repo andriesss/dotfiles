@@ -61,5 +61,38 @@ plugins=(
   fzf
 )
 
+
+strip_diff_leading_symbols() {
+  color_code_regex="(\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K])"
+  sed -r "s/^($color_code_regex)diff --git .*$//g" | \
+  sed -r "s/^($color_code_regex)index .*$/\n\1$(rule)/g" | \
+  sed -r "s/^($color_code_regex)\+\+\+(.*)$/\1+++\5\n\1$(rule)\x1B\[m/g" |\
+  sed -r "s/^($color_code_regex)[\+\-]/\1 /g"
+}
+
+
+
+
 source $ZSH/oh-my-zsh.sh
 
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+
+
+export LC_ALL=en_US.UTF-8
+
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/andries/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/andries/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/andries/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/andries/google-cloud-sdk/completion.zsh.inc'; fi
